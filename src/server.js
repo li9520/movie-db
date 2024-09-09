@@ -7,7 +7,7 @@ const { App } = require('./App');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   let indexHTML = fs.readFileSync( path.resolve( __dirname, '../', 'public', 'index.html' ), {
     encoding: 'utf8'
   });
