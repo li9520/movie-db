@@ -1,8 +1,8 @@
-const express = require('express');
-const { renderToString } = require('react-dom/server');
-const fs = require( 'fs' );
-const path = require( 'path' );
-const { App } = require('./App');
+import express from 'express';
+import { renderToString } from 'react-dom/server';
+import fs from 'fs';
+import path from 'path';
+import { App } from './App';
 
 const app = express();
 app.use(express.static(path.join(__dirname,'..','build')))
