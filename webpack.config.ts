@@ -21,7 +21,24 @@ const commonConfig = (options: BuildOptions) => ({
         use: {
           loader: "babel-loader",
         }
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                namedExport: false,
+                exportLocalsConvention: 'camel-case',
+              },
+            },
+          }
+      ]
+      },
     ]
   },
   resolve: {
