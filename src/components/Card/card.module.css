@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.rating{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
