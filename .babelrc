@@ -1,5 +1,16 @@
 {
   "presets": ["@babel/preset-env", ["@babel/preset-react", {
     "runtime": "automatic"
- }], "@babel/preset-typescript"]
+ }], "@babel/preset-typescript"],
+ "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "src": "./src",
+        "components": "./src/components",
+        "pages": "./src/pages",
+        "entities": "./src/entities"
+      }
+    }]
+  ]
 }

@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 type BuildMode = 'production' | 'development';
+const srcPath = path.resolve(__dirname, 'src');
 
 type BuildEnv = {
   mode: BuildMode;
@@ -42,7 +43,13 @@ const commonConfig = (options: BuildOptions) => ({
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      src: srcPath,
+      components: path.join(srcPath, 'components'),
+      pages: path.join(srcPath, 'pages'),
+      entities: path.join(srcPath, 'entities'),
+    }
   }
 })
 

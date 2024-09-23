@@ -7,6 +7,13 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+			"components/*": ["src/components/*"],
+      "pages/*": ["src/pages/*"],
+      "entities/*": ["src/entities/*"],
+		},
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
   },

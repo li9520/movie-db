@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { renderToString } from 'react-dom/server';
 import fs from 'fs';
 import path from 'path';
@@ -7,11 +7,7 @@ import routes from './App/routes';
 import { matchPath } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 
-const app = express();
-app.use(express.static(path.join(__dirname,'..','build')))
-const PORT = process.env.PORT || 3000;
-
-app.get('*', async(req, res) => {
+const sendServerSideData = async(req: Request, res: Response) => {
   const activeRoute = routes.find((route) =>
     matchPath(route.path, req.url)
   );
@@ -32,7 +28,14 @@ app.get('*', async(req, res) => {
   res.status( 200 );
 
   return res.send( indexHTML );
-});
+}
+
+const app = express();
+app.use(express.static(path.join(__dirname,'..','build')))
+const PORT = process.env.PORT || 3000;
+
+app.get('/', sendServerSideData);
+app.get('/movie/:id', sendServerSideData);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

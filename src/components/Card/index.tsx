@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Movie } from '../../entities/movie';
+import { Movie } from 'entities/movie';
 import styles from './card.module.css'
 
 interface CardProps {

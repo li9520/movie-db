@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Movie } from '../../entities/movie';
+import { Movie } from 'entities/movie';
 import styles from './card-list.module.css';
 import { Card } from '../Card';
 import { useNavigate } from 'react-router-dom';
