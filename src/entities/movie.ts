@@ -5,4 +5,6 @@ export type Movie = {
   rating: number,
   genre: string[],
   poster: string,
+  country: string,
+  plot: string,
 }
