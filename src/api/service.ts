@@ -1,4 +1,3 @@
-import { Movie } from "../entities/movie";
 import { getMovie, getMovies } from "./endpoints/movies";
 import { mapMovieDTOToMovie, mapMoviesDTOToMovies } from "./mappers";
 
