@@ -1,13 +1,13 @@
 services:
   app:
-    image: app
+    image: ghcr.io/li9520/movie-app
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
   proxy:
-    image: proxy
+    image: ghcr.io/li9520/movie-proxy
     build:
       context: .
       dockerfile: Dockerfile.proxy
