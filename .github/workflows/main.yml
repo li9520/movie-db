@@ -1,7 +1,9 @@
 name: build and deploy
 
 on:
-  push
+  push:
+    branches: 
+      - main
   pull_request:
     branches: 
       - main
@@ -19,8 +21,8 @@ jobs:
 
       - name: Build and Push the Image to GHCR
         run: |
-          docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml push
+          docker compose -f docker-compose.yml build
+          docker compose -f docker-compose.yml push
 
   deploy:
     runs-on: ubuntu-latest
@@ -34,9 +36,7 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
     - name: connect and pull
-      run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 
-        cd ${{ secrets.WORK_DIR }} && git checkout main && docker-compose down && git pull && docker-compose pull && docker-compose up -d && exit
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout origin/main && docker compose down && git pull && docker compose pull && docker compose up -d && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
   
