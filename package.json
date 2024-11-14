@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "webpack --env mode=development --watch",
     "start:server": "nodemon build/server.js",
-    "start": "concurrently \"npm run watch\" \"npm run start:server\"",
+    "dev": "concurrently \"npm run watch\" \"npm run start:server\"",
+    "start": "node build/server.js",
     "build": "webpack --env mode=development"
   },
   "keywords": [],
